@@ -42,3 +42,29 @@ function login() {
 
     }
 }
+
+function userNumber() {
+    const elem = document.getElementById("usernumber");
+
+
+    if (elem.value > 100) {
+        elem.value = 0;
+    } else if (elem.value < 0) {
+        elem.value = 100;
+    }
+
+    const num = Number(elem.value);
+
+    if (num <= 40) {
+        elem.style.backgroundColor = "red";
+    } else if (num <= 60) {
+        elem.style.backgroundColor = "blue";
+    } else if (num <= 80) {
+        elem.style.backgroundColor = "green";
+    } else if (num <= 100) {
+        elem.style.backgroundColor = "purple";
+    } else {
+        elem.style.backgroundColor = "yellow";
+    }
+
+}
