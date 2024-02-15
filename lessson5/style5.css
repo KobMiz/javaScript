@@ -2,12 +2,13 @@
 
 :root {
     --bg: #7e3564;
+    --or: orange;
 }
 
 body {
     direction: rtl;
     font-family: 'Rubik', sans-serif;
-    background-color: var(--bg);
+    background-color: var(--or);
 }
 
 h1 {
