@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>lesson 6</title>
+</head>
+
+<body>
+    <h1>Lesson 7</h1>
+
+    <div class="frame">
+        <div class="task">
+            <h2>יש לאפשר למשתמש לבחור צבע רקע</h2>
+            <input type="color" id="bg" oninput="changeColor(this.value)">
+        </div>
+
+        <div class="task">
+            <h2>יש לאפשר למשתמש לבחור כותרת לאתר</h2>
+            <input type="text" oninput="changeTitle(this.value)">
+        </div>
+
+        <div class="task">
+            <h2>יש לאפשר לבחור כותרת לאתר מתוך רשימה</h2>
+            <select oninput="changeTitle(this.value)">
+                <option></option>
+                <option>אתר מגניב</option>
+                <option>אתר אתר</option>
+                <option>אתר תרגילים</option>
+                <option>Google</option>
+                <option>Facebook</option>
+                <option>Instagram</option>
+            </select>
+        </div>
+
+        <div class="task">
+            <h2>לחצן המאפס את הכותרת</h2>
+            <button onclick="changeTitle('lesson 7')">איפוס</button>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
