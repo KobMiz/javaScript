@@ -5,22 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="numbers.js" defer></script>
     <script src="script.js" defer></script>
-    <title>lesson 6</title>
+    <title>lesson 8</title>
 </head>
 
 <body>
-    <h1>Lesson 7</h1>
+    <h1>Lesson 8 - Array</h1>
 
     <div class="frame">
-        <div class="task">
-            <h2>יש לאפשר למשתמש לבחור צבע רקע</h2>
-            <input type="color" id="bg" oninput="changeColor(this.value)">
-        </div>
+        <div id="numbers"></div>
 
         <div class="task">
-            <h2>יש לאפשר למשתמש לבחור כותרת לאתר</h2>
+            <button onclick="max()">מספר גדול</button>
+            <button onclick="min()">מספר קטן</button>
+            <button onclick="sum()">סכום</button>
+            <button onclick="avg()">ממוצע</button>
+            <button onclick="count()">כמות מספרים</button>
+            <button onclick="sortasc()">מיון בסדר עולה</button>
+            <button onclick="sortabc()">מיון בסדר יורד</button>
+            <button onclick="leftstart()">הסרה מהתחלה</button>
+            <button onclick="leftend()">הסרה מהסוף</button>
+            <button onclick="addRandomToStart()">הוספת מספר רנדומלי להתחלה</button>
+            <button onclick="addRandomToEnd()">הוספת מספר רנדומלי לסוף</button>
+            <button onclick="lines()">שורות נפרדות</button>
+            <button onclick="inline()">בשורה אחת</button>
         </div>
+        <p id="output"></p>
 
     </div>
 </body>
