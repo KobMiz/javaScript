@@ -7,6 +7,7 @@ let direction = 'left';
 let isGameOver = false;
 let interval;
 let random;
+let score = 0;
 
 function createBoard() {
     board.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
@@ -99,7 +100,12 @@ function move(dir) {
     direction = dir;
     snake.unshift(head);
 
+    // אם הראש החדש נוגע בפיתיון - אז שמים את הפיתיון במקום אחר
+    // ולא מורידים את סוף הנחש
     if (head === random) {
+        score++;
+        document.querySelector("#score span").innerText = score;
+        sound("./Pebble.ogg");
         setApple();
     } else {
         snake.pop();
@@ -111,22 +117,44 @@ function move(dir) {
 
 function autoMove() {
     clearInterval(interval);
-    interval = setInterval(() => move(direction), 200);
+    const speed = 300 - score;
+    interval = setInterval(() => move(direction), speed > 50 ? speed : 50);
 }
 
 function gameOver() {
     isGameOver = true;
     clearInterval(interval);
-    alert("Game over");
+    sound("./Country_Blues.ogg");
+    document.querySelector("#newGame").style.display = "initial";
+    setTimeout(() => alert("Game over"), 50);
 }
 
 function setApple() {
     do {
+        // מגריל מספר לפי כמות המשבצות
         random = Math.floor(Math.random() * width * height);
-    } while (snake.includes(random));
+    } while (snake.includes(random)) // אם המספר יוצא על מיקום הנחש - מגרילים שוב
 
-    divs.forEach(div => direction.classList.remove('apple'));
+    // מנקה את הפיתיון מכל הלוח
+    divs.forEach(d => d.classList.remove('apple'));
+    // שם את הפיתיון במקום
     divs[random].classList.add("apple");
+}
+
+function sound(fileName) {
+    const audio = document.createElement('audio');
+    audio.src = fileName;
+    audio.play();
+}
+
+function newGame() {
+    snake.splice(0, snake.length);
+    snake.push(9, 8, 7, 6, 5, 4, 3, 2, 1, 0);
+    isGameOver = false;
+    score = 0;
+    color();
+    setApple();
+    document.querySelector("#newGame").style.display = "none";
 }
 
 window.addEventListener("keydown", ev => {
@@ -139,6 +167,7 @@ window.addEventListener("keydown", ev => {
         case "ArrowRight": move("right"); break;
         case "ArrowDown": move("down"); break;
         case "ArrowLeft": move("left"); break;
+        case "Escape": clearInterval(interval); break;
     }
 });
 
